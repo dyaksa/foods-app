@@ -45,6 +45,7 @@ public class CategoryActivity extends AppCompatActivity {
                 (List<Categories.Category>) intent.getSerializableExtra(MainActivity.EXTRA_CATEGORY);
         int position = intent.getIntExtra(MainActivity.EXTRA_POSITION,0);
 
+        //set adapter ViewPagerCategoryAdapter untuk mengambil data spesifik
         ViewPagerCategoryAdapter adapter = new ViewPagerCategoryAdapter(getSupportFragmentManager(),categories);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
