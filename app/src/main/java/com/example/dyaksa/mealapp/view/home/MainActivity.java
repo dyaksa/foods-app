@@ -1,5 +1,6 @@
 package com.example.dyaksa.mealapp.view.home;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,13 +15,18 @@ import com.example.dyaksa.mealapp.adapter.RecyclerViewHomeAdapter;
 import com.example.dyaksa.mealapp.adapter.ViewPagerHeaderAdapter;
 import com.example.dyaksa.mealapp.model.Categories;
 import com.example.dyaksa.mealapp.model.Meals;
+import com.example.dyaksa.mealapp.view.category.CategoryActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements HomeView {
+
+    public static final String EXTRA_CATEGORY = "category";
+    public static final String EXTRA_POSITION = "position";
 
     @BindView(R.id.viewHeader)
     ViewPager viewPagerHeader;
@@ -85,7 +91,12 @@ public class MainActivity extends AppCompatActivity implements HomeView {
 
         //setOnClickListener
         categoryAdapter.setOnItemClickListener((view, position) -> {
-            Toast.makeText(this,categories.get(position).getStrCategory(),Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this,CategoryActivity.class);
+
+            //serializable implements dari model Category
+            intent.putExtra(EXTRA_CATEGORY,(Serializable) categories);
+            intent.putExtra(EXTRA_POSITION, position);
+            startActivity(intent);
         });
     }
 
