@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements HomeView {
         //setOnItemClick ke detail activity dengan pengambilan data dari TextView
         headerAdapter.setOnItemClickListener((v, position) -> {
             TextView mealName = v.findViewById(R.id.mealName);
-            Intent intent = new Intent(this,DetailActivity.class);
+            Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
             intent.putExtra(EXTRA_DETAIL,mealName.getText().toString());
             startActivity(intent);
         });
