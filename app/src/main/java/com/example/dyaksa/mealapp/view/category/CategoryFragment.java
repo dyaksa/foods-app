@@ -2,6 +2,7 @@ package com.example.dyaksa.mealapp.view.category;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,6 +24,8 @@ import com.example.dyaksa.mealapp.R;
 import com.example.dyaksa.mealapp.Utils;
 import com.example.dyaksa.mealapp.adapter.RecyclerViewMealByCategory;
 import com.example.dyaksa.mealapp.model.Meals;
+import com.example.dyaksa.mealapp.view.detail.DetailActivity;
+import com.example.dyaksa.mealapp.view.home.MainActivity;
 
 import java.util.List;
 
@@ -111,7 +114,11 @@ public class CategoryFragment extends Fragment implements CategoryView {
         adapter.notifyDataSetChanged();
 
         adapter.setOnItemClickListener((view, position) -> {
-            Toast.makeText(getActivity(),meals.get(position).getStrMeal(),Toast.LENGTH_LONG).show();
+            TextView mealName = view.findViewById(R.id.mealName);
+            Intent intent = new Intent(getActivity(),DetailActivity.class);
+            intent.putExtra(MainActivity.EXTRA_DETAIL,mealName.getText().toString());
+            startActivity(intent);
+
         });
 
     }

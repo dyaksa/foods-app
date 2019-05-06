@@ -20,9 +20,13 @@
         </activity>
         <activity
             android:name=".view.category.CategoryActivity"
-            android:theme="@style/AppTheme"
+            android:label="Category"
             android:screenOrientation="portrait"
-            android:label="Category"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.detail.DetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
     </application>
 
 </manifest>

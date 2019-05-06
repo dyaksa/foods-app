@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dyaksa.mealapp.R;
@@ -16,6 +17,7 @@ import com.example.dyaksa.mealapp.adapter.ViewPagerHeaderAdapter;
 import com.example.dyaksa.mealapp.model.Categories;
 import com.example.dyaksa.mealapp.model.Meals;
 import com.example.dyaksa.mealapp.view.category.CategoryActivity;
+import com.example.dyaksa.mealapp.view.detail.DetailActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements HomeView {
 
     public static final String EXTRA_CATEGORY = "category";
     public static final String EXTRA_POSITION = "position";
+    public static final String EXTRA_DETAIL = "detail";
 
     @BindView(R.id.viewHeader)
     ViewPager viewPagerHeader;
@@ -70,9 +73,12 @@ public class MainActivity extends AppCompatActivity implements HomeView {
         viewPagerHeader.setPadding(20,0,150,0);
         headerAdapter.notifyDataSetChanged();
 
-        //setOnItemClick
+        //setOnItemClick ke detail activity dengan pengambilan data dari TextView
         headerAdapter.setOnItemClickListener((v, position) -> {
-            Toast.makeText(this,meal.get(position).getStrMeal(),Toast.LENGTH_LONG).show();
+            TextView mealName = v.findViewById(R.id.mealName);
+            Intent intent = new Intent(this,DetailActivity.class);
+            intent.putExtra(EXTRA_DETAIL,mealName.getText().toString());
+            startActivity(intent);
         });
 
     }
