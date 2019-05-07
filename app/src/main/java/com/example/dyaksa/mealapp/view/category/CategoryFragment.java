@@ -38,6 +38,8 @@ import butterknife.OnClick;
  */
 public class CategoryFragment extends Fragment implements CategoryView {
 
+    private static final String EXTRA_DETAIL = "detail";
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -116,7 +118,7 @@ public class CategoryFragment extends Fragment implements CategoryView {
         adapter.setOnItemClickListener((view, position) -> {
             TextView mealName = view.findViewById(R.id.mealName);
             Intent intent = new Intent(getActivity(),DetailActivity.class);
-            intent.putExtra(MainActivity.EXTRA_DETAIL,mealName.getText().toString());
+            intent.putExtra(EXTRA_DETAIL,mealName.getText().toString());
             startActivity(intent);
 
         });

@@ -25,7 +25,12 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".view.detail.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.WebViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor"
+            android:theme="@style/AppTheme"
             />
     </application>
 

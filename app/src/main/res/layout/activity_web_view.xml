@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".view.category.CategoryActivity">
+    tools:context=".view.WebViewActivity">
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppBarLayoutTheme">
@@ -17,18 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabIndicatorHeight="3dp"
-            app:tabIndicatorColor="@color/colorPrimary"
-            app:tabMode="scrollable"
-            app:tabContentStart="85dp"/>
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </WebView>
 </android.support.design.widget.CoordinatorLayout>
