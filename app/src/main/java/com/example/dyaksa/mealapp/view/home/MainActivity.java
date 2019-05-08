@@ -1,6 +1,8 @@
 package com.example.dyaksa.mealapp.view.home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import com.example.dyaksa.mealapp.model.Categories;
 import com.example.dyaksa.mealapp.model.Meals;
 import com.example.dyaksa.mealapp.view.category.CategoryActivity;
 import com.example.dyaksa.mealapp.view.detail.DetailActivity;
+import com.example.dyaksa.mealapp.view.intro.Intro;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements HomeView {
     public static final String EXTRA_CATEGORY = "category";
     public static final String EXTRA_POSITION = "position";
     public static final String EXTRA_DETAIL = "detail";
+    public static final String EXTRA_PREF = "first_start";
 
     @BindView(R.id.viewHeader)
     ViewPager viewPagerHeader;
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements HomeView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        appIntro();
         ButterKnife.bind(this);
         presenter = new HomePresenter(this);
         presenter.getMeal();
@@ -109,5 +114,21 @@ public class MainActivity extends AppCompatActivity implements HomeView {
     @Override
     public void onErrorLoading(String message) {
         Utils.showDialogMessage(this,"Title",message);
+    }
+
+    public void appIntro(){
+        Thread t = new Thread(() -> {
+            SharedPreferences getPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(getBaseContext());
+            boolean isFirstStart = getPrefs.getBoolean(EXTRA_PREF,true);
+            if(isFirstStart){
+                final Intent i = new Intent(MainActivity.this,Intro.class);
+                runOnUiThread(() -> startActivity(i));
+                SharedPreferences.Editor e = getPrefs.edit();
+                e.putBoolean(EXTRA_PREF,false);
+                e.apply();
+            }
+        });
+        t.start();
     }
 }

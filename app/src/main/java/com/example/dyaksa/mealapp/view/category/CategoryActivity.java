@@ -1,6 +1,8 @@
 package com.example.dyaksa.mealapp.view.category;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import com.example.dyaksa.mealapp.R;
 import com.example.dyaksa.mealapp.adapter.ViewPagerCategoryAdapter;
 import com.example.dyaksa.mealapp.model.Categories;
 import com.example.dyaksa.mealapp.view.home.MainActivity;
+import com.example.dyaksa.mealapp.view.intro.Intro;
 
 import java.util.List;
 
