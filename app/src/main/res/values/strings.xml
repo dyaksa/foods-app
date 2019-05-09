@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Foods App</string>
+    <string name="app_name">Mealpad</string>
     <string name="search_your_recipes">Search Your Recipes…</string>
     <string name="meal_categories">Meal Categories</string>
 
@@ -14,10 +14,10 @@
     <string name="youtube">YOUTUBE</string>
     <string name="source">SOURCE</string>
     <string name="favorite">Favorite</string>
-    <string name="slide_title_1">recipes from the best of the best</string>
+    <string name="slide_title_1">Recipes from the best of the est</string>
     <string name="slide_desc_1">An endless supply of recipes to trigger your next cooking adventure from Us</string>
-    <string name="slide_title_2">Step by step guided recipes</string>
+    <string name="slide_title_2">Step by Step Guided Recipes</string>
     <string name="slide_desc_2">Let us do our thinking with our step-by-step recipes, including more useful video tutorials and tools to make cooking easier.</string>
-    <string name="slide_title_3">save and organize your favorites</string>
+    <string name="slide_title_3">Save and Organize Your Favorites</string>
     <string name="slide_desc_3">Saving your favorite recipes You cant save your fave for safekeeping in a digital recipe box. Once saved, create your own collection</string>
 </resources>
