@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity implements HomeView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        appIntro();
+        //check intro splash pada aplikasi
+        Utils.checkAppIntro(this,Intro.EXTRA_INTRO);
+
         ButterKnife.bind(this);
         presenter = new HomePresenter(this);
         presenter.getMeal();
@@ -114,21 +116,5 @@ public class MainActivity extends AppCompatActivity implements HomeView {
     @Override
     public void onErrorLoading(String message) {
         Utils.showDialogMessage(this,"Title",message);
-    }
-
-    public void appIntro(){
-        Thread t = new Thread(() -> {
-            SharedPreferences getPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(getBaseContext());
-            boolean isFirstStart = getPrefs.getBoolean(EXTRA_PREF,true);
-            if(isFirstStart){
-                final Intent i = new Intent(MainActivity.this,Intro.class);
-                runOnUiThread(() -> startActivity(i));
-                SharedPreferences.Editor e = getPrefs.edit();
-                e.putBoolean(EXTRA_PREF,false);
-                e.apply();
-            }
-        });
-        t.start();
     }
 }
